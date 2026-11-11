@@ -1,28 +1,25 @@
 package ec.edu.uce.pa3.Interceptores;
 
+import ec.edu.uce.pa3.Alquiler;
 import jakarta.annotation.Priority;
-import jakarta.inject.Inject;
 import jakarta.interceptor.AroundInvoke;
 import jakarta.interceptor.Interceptor;
 import jakarta.interceptor.InvocationContext;
 
-@Validacion 
+@Validar 
 @Interceptor 
-@Priority (Interceptor.Priority.APPLICATION + 1 )
+@Priority(Interceptor.Priority.APPLICATION + 1)
 public class ValidacionInterceptor {
 
-
     @AroundInvoke 
-    public Object validar (InvocationContext context ) throws Exception {
-        System.out.println(" 11111");
-        Object[] parametros = context.getParameters() ;
-        Transferencia transferencia = (Transferencia) parametros[0];
-        if (transferencia.getMonto() < 10 || transferencia.getDestino() == "Erick") {
-            throw new IllegalArgumentException("Debe der menor a 5 ");
+    public Object Validar(InvocationContext context) throws Exception {
+        System.out.println("1. Validando ....");
+        Object [] parametros = context.getParameters();
+        Alquiler alquiler = (Alquiler) parametros[0] ;
+        if (alquiler.getDias() < 0 || alquiler.getPrecioDiario() < 0  ) { 
+            throw new IllegalArgumentException("El alquiler debe ser mayor a 0 igual el precio ");
 
-
-        }
-        System.out.println(" Validacion correecta ");
-        return context.proceed();
     }
+return context.proceed();
+}
 }

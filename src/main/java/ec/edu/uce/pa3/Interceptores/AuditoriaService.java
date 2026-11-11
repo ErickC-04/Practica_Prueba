@@ -1,18 +1,19 @@
 package ec.edu.uce.pa3.Interceptores;
 
+import ec.edu.uce.pa3.Alquiler;
 import jakarta.enterprise.context.ApplicationScoped;
-
 @ApplicationScoped 
 public class AuditoriaService {
 
- public String RealizarTransferencia(Transferencia transferencia , String registro) {
-        System.out.println();
-        System.out.println("2. Realizando la transferencia auditoria ");
-        System.out.println(" Registro :" + registro);
-        System.out.println(" Origen :" +  transferencia.getOrigen());
-        System.out.println(" Destino :" + transferencia.getDestino());
-        System.out.println("Monto :" + transferencia.getMonto());
+    public String realizar( Alquiler alquiler , String metodo) {
+        System.out.println(" Realizando alquiler ");
+        System.out.println(" Nombre del metodo :" + metodo);
+        System.out.println(" Cliente :" + alquiler.getCliente() );
+        System.out.println("Vehiculo :" + alquiler.getVehiculo());
+        System.out.println(" Dias :" + alquiler.getDias());
+        System.out.println(" Precio :" + alquiler.getPrecioDiario() );
 
-        return " Registro realizado con exito" ;
-}
+        return " Alquiler realizado con exito " ;
+    }
+
 }
